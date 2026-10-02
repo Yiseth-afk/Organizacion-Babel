@@ -1,0 +1,17 @@
+{
+  "name": "babel-landing",
+  "version": "1.0.0",
+  "description": "Landing page de Organización Babel con backend para mensajes de honor a Danna.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Organización Babel",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
+  }
+}

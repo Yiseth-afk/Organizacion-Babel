@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y Condiciones - Organización Babel</title>
+  <!-- CSS Externo -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Chewy', cursive;
+      background-color: #fdfdfd;
+      color: #333;
+    }
+    .header, .footer, .special-heading {
+      background-color: #00bcd4; /* Azul cian */
+      color: white;
+    }
+    .container {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    /* Logo header: tamaño mayor y responsivo */
+    .logo {
+      height: 88px;        /* tamaño en escritorio */
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    @media (max-width: 768px) {
+      .logo { height: 64px; } /* tamaño en tablets / móviles grandes */
+    }
+    @media (max-width: 420px) {
+      .logo { height: 48px; } /* tamaño en móviles pequeños */
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    .nav-links a:hover {
+      opacity: 0.7;
+    }
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: #00bcd4;
+        padding: 20px;
+        gap: 10px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-icon {
+        display: block;
+      }
+    }
+    section {
+      padding: 40px 20px;
+    }
+    section h2 {
+      color: #00bcd4;
+      text-align: center;
+      margin-top: 0;
+      font-size: 32px;
+    }
+    section h3 {
+      color: #00bcd4;
+      margin-top: 30px;
+      font-size: 20px;
+    }
+    section p, section li {
+      line-height: 1.8;
+      font-size: 14px;
+      color: #555;
+    }
+    section ul {
+      margin-left: 20px;
+    }
+    section li {
+      margin-bottom: 10px;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .social-footer {
+      margin-top: 12px;
+    }
+    .social-footer a {
+      color: white;
+      margin: 0 10px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    .social-footer a:hover {
+      opacity: 0.7;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #00bcd4;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html"><img class="logo" src="images/logo.png" alt="Logo Babel" /></a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#bienvenidos">Inicio</a>
+        <a href="index.html#services">Servicios</a>
+        <a href="index.html#adopta">Adopta</a>
+        <a href="index.html#asistentes">Contacto</a>
+        <a href="https://www.facebook.com/share/1635YAznXs/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://www.instagram.com/animals.babel?utm_source=qr&igsh=MWhnMnB4YjZjZjg1Mw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/573207309155" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <span class="menu-icon" id="menuIcon">
+        <i class="fas fa-bars"></i>
+      </span>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <section>
+    <div class="container">
+      <a href="index.html" class="back-link">← Volver al inicio</a>
+      <h2>Términos y Condiciones</h2>
+
+      <h3>1. Aceptación de Términos</h3>
+      <p>Al acceder y utilizar el sitio web de la Organización Babel (en adelante "Organización"), usted acepta cumplir con estos Términos y Condiciones. Si no está de acuerdo con alguna parte de estos términos, le pedimos que no utilice nuestro sitio.</p>
+
+      <h3>2. Descripción del Servicio</h3>
+      <p>La Organización Babel es una plataforma dedicada al cuidado, rescate y adopción responsable de animales. A través de nuestro sitio, ofrecemos:</p>
+      <ul>
+        <li>Información sobre animales disponibles para adopción</li>
+        <li>Formularios de adopción y solicitudes de citas</li>
+        <li>Posibilidad de registrar animales para dar en adopción</li>
+        <li>Información sobre nuestros servicios y proyectos</li>
+        <li>Canales de contacto y comunicación</li>
+      </ul>
+
+      <h3>3. Elegibilidad del Usuario</h3>
+      <p>Para utilizar nuestros servicios de adopción, debe cumplir con los siguientes requisitos:</p>
+      <ul>
+        <li>Ser mayor de 18 años</li>
+        <li>Proporcionar información veraz y completa en los formularios</li>
+        <li>Tener capacidad legal para adoptar</li>
+        <li>Comprometerse a cuidar responsablemente del animal adoptado</li>
+      </ul>
+
+      <h3>4. Responsabilidades de los Adoptantes</h3>
+      <p>Al adoptar un animal de la Organización Babel, usted se compromete a:</p>
+      <ul>
+        <li>Proporcionar alimento, agua y vivienda adecuados</li>
+        <li>Proveer atención veterinaria regular y vacunaciones</li>
+        <li>Tratar al animal con respeto, amor y compasión</li>
+        <li>No abandonar ni maltratar al animal bajo ninguna circunstancia</li>
+        <li>Notificar a la Organización si no puede continuar cuidando al animal</li>
+        <li>Permitir inspecciones del hogar si es necesario para garantizar el bienestar del animal</li>
+      </ul>
+
+      <h3>5. Proceso de Adopción</h3>
+      <p>El proceso de adopción incluye:</p>
+      <ul>
+        <li>Completar el formulario de adopción con información veraz</li>
+        <li>Agendar una cita con la Organización</li>
+        <li>Conocer al animal y verificar compatibilidad</li>
+        <li>Firmar acuerdo de adopción</li>
+        <li>Recibir documentación e información sobre el cuidado del animal</li>
+      </ul>
+
+      <h3>6. Dar un Animal en Adopción</h3>
+      <p>Si desea registrar un animal para adopción a través de nuestra plataforma:</p>
+      <ul>
+        <li>Debe ser mayor de 18 años</li>
+        <li>Proporcionar información completa y precisa sobre el animal</li>
+        <li>Incluir fotos claras y descriptivas</li>
+        <li>Ser honesto sobre el temperamento y necesidades del animal</li>
+        <li>Estar disponible para contacto y seguimiento</li>
+      </ul>
+
+      <h3>7. Información Proporcionada</h3>
+      <p>La información sobre animales en nuestro sitio se proporciona de buena fe. Sin embargo, no garantizamos la exactitud completa de todas las descripciones. Le recomendamos conocer personalmente al animal antes de tomar una decisión de adopción.</p>
+
+      <h3>8. Privacidad de Datos</h3>
+      <p>La información personal proporcionada a través de formularios será utilizada únicamente para:</p>
+      <ul>
+        <li>Procesar solicitudes de adopción</li>
+        <li>Comunicaciones relacionadas con la Organización</li>
+        <li>Mejorar nuestros servicios</li>
+      </ul>
+      <p>No compartimos información personal con terceros sin consentimiento, salvo por requerimientos legales.</p>
+
+      <h3>9. Limitación de Responsabilidad</h3>
+      <p>La Organización Babel no se hace responsable por:</p>
+      <ul>
+        <li>Daños o lesiones causados por animales después de la adopción</li>
+        <li>Incompatibilidad entre el animal y la familia adoptante</li>
+        <li>Problemas de salud no detectados previamente</li>
+        <li>Interrupciones o errores en el funcionamiento del sitio web</li>
+      </ul>
+
+      <h3>10. Conducta del Usuario</h3>
+      <p>Al usar nuestro sitio, usted se compromete a:</p>
+      <ul>
+        <li>No publicar contenido ofensivo, discriminatorio u ilegal</li>
+        <li>No intentar piratear o dañar el sitio</li>
+        <li>No falsificar información en formularios</li>
+        <li>Respetar los derechos de otros usuarios</li>
+      </ul>
+
+      <h3>11. Contenido del Sitio</h3>
+      <p>Todo el contenido del sitio web (textos, imágenes, logos, diseño) es propiedad de la Organización Babel o utilizado con permiso. No se permite reproducir, distribuir o reutilizar sin autorización previa.</p>
+
+      <h3>12. Enlaces Externos</h3>
+      <p>Nuestro sitio puede contener enlaces a redes sociales y otros sitios externos. No somos responsables por el contenido de esos sitios ni por políticas de privacidad de terceros.</p>
+
+      <h3>13. Modificaciones de Términos</h3>
+      <p>La Organización Babel se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Los cambios serán efectivos cuando se publiquen en este sitio. Le recomendamos revisar regularmente esta página.</p>
+
+      <h3>14. Terminación de Servicios</h3>
+      <p>La Organización puede negar o suspender el acceso a nuestros servicios si detecta que usted viola estos Términos y Condiciones o si incumple con sus responsabilidades como adoptante.</p>
+
+      <h3>15. Ley Aplicable</h3>
+      <p>Estos Términos y Condiciones se rigen por las leyes de Colombia. Cualquier disputa será resuelta en los juzgados competentes.</p>
+
+      <h3>16. Contacto</h3>
+      <p>Si tiene preguntas o inquietudes sobre estos Términos y Condiciones, contáctenos a través de:</p>
+      <ul>
+        <li>📧 Correo: contacto@babel.org</li>
+        <li>💬 WhatsApp: +57 320 730 9155</li>
+        <li>📱 Instagram: @animals.babel</li>
+        <li>👍 Facebook: Organización Babel</li>
+      </ul>
+
+      <h3>17. Aceptación Final</h3>
+      <p>Al continuar usando este sitio web y nuestros servicios, usted confirma que ha leído, comprendido y acepta estos Términos y Condiciones.</p>
+
+      <p style="margin-top: 60px; text-align: center; font-size: 12px; color: #999;">
+        Última actualización: 11 de mayo de 2026<br>
+        © 2026 Organización Babel. Todos los derechos reservados.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Organización Babel. Todos los derechos reservados.</p>
+    <div class="social-footer">
+      <a href="https://www.facebook.com/share/1635YAznXs/" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-square"></i>
+      </a>
+      <a href="https://www.instagram.com/animals.babel?utm_source=qr&igsh=MWhnMnB4YjZjZjg1Mw==" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/573207309155" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Menú hamburguesa responsivo
+    const menuIcon = document.getElementById('menuIcon');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuIcon) {
+      menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    }
+
+    // Cerrar menú al hacer clic en un enlace
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Organización Babel</title>
+  <link rel="stylesheet" href="css/normalize.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e6f8ff, #ffffff 60%);
+      color: #12323d;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      color: #007a8a;
+    }
+    .hero p {
+      margin: 12px auto 0;
+      max-width: 760px;
+      color: #31515d;
+      line-height: 1.6;
+    }
+    .panel {
+      background: rgba(255,255,255,0.95);
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid rgba(0, 188, 212, 0.2);
+      box-shadow: 0 18px 40px rgba(0, 188, 212, 0.12);
+    }
+    .secret-form {
+      display: grid;
+      gap: 16px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .secret-form input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid #9cdce8;
+      font-size: 1rem;
+    }
+    .secret-form button {
+      border: none;
+      border-radius: 999px;
+      padding: 14px 18px;
+      background: #00bcd4;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .secret-form button:hover {
+      background: #0097a7;
+    }
+    .admin-section {
+      display: none;
+    }
+    .admin-section.show {
+      display: block;
+    }
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .admin-actions button {
+      padding: 10px 16px;
+      border: 1px solid #00bcd4;
+      background: white;
+      color: #007a8a;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .admin-actions button:hover {
+      background: #00bcd4;
+      color: white;
+    }
+    .message-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+    }
+    .message-table th,
+    .message-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #e2f4fa;
+      text-align: left;
+      vertical-align: top;
+    }
+    .message-table th {
+      background: #f0fbff;
+      color: #006978;
+      font-weight: 700;
+    }
+    .message-text {
+      max-width: 420px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      line-height: 1.5;
+    }
+    .delete-btn {
+      border: none;
+      background: #ff5f5f;
+      color: white;
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background: #e64a4a;
+    }
+    .status {
+      margin-top: 18px;
+      color: #0a5e70;
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .message-table th, .message-table td {
+        padding: 10px 8px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <h1>Panel Administrativo - Organización Babel</h1>
+      <p>Gestiona los mensajes de honor a Danna desde una interfaz segura. Aquí puedes revisar y borrar los mensajes almacenados en la base de datos.</p>
+    </div>
+
+    <div class="panel">
+      <form id="adminLogin" class="secret-form">
+        <label for="adminPassword">Contraseña administrativa</label>
+        <input id="adminPassword" type="password" placeholder="Ingresa la contraseña" required />
+        <button type="submit">Ingresar al panel</button>
+      </form>
+
+      <div id="adminSection" class="admin-section">
+        <div class="admin-actions">
+          <button id="refreshMessages">Actualizar mensajes</button>
+        </div>
+        <div class="status" id="adminStatus">Cargando mensajes...</div>
+        <table class="message-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Mensaje</th>
+              <th>Creado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="messagesBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_PASSWORD = 'BabelAdmin2026';
+    const adminLogin = document.getElementById('adminLogin');
+    const adminSection = document.getElementById('adminSection');
+    const adminStatus = document.getElementById('adminStatus');
+    const messagesBody = document.getElementById('messagesBody');
+    const refreshMessages = document.getElementById('refreshMessages');
+
+    async function fetchMessages() {
+      try {
+        const res = await fetch('/api/messages');
+        if (!res.ok) throw new Error('No se pudieron cargar los mensajes');
+        return await res.json();
+      } catch (error) {
+        adminStatus.textContent = 'Error al cargar mensajes. Asegúrate de que el servidor esté en ejecución.';
+        return [];
+      }
+    }
+
+    async function loadMessages() {
+      adminStatus.textContent = 'Cargando mensajes...';
+      const messages = await fetchMessages();
+      if (!messages.length) {
+        messagesBody.innerHTML = '<tr><td colspan="5">No hay mensajes registrados.</td></tr>';
+        adminStatus.textContent = 'No se encontraron mensajes.';
+        return;
+      }
+      messagesBody.innerHTML = messages.map(msg => `
+        <tr>
+          <td>${msg.id}</td>
+          <td>${msg.name || 'Anónimo'}</td>
+          <td class="message-text">${msg.text}</td>
+          <td>${new Date(msg.created_at).toLocaleString('es-CO')}</td>
+          <td><button class="delete-btn" data-id="${msg.id}">Eliminar</button></td>
+        </tr>
+      `).join('');
+      adminStatus.textContent = `Mostrando ${messages.length} mensaje(s).`;
+      document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+          const id = button.dataset.id;
+          if (!confirm('¿Eliminar este mensaje?')) return;
+          await deleteMessage(id);
+          await loadMessages();
+        });
+      });
+    }
+
+    async function deleteMessage(id) {
+      try {
+        const res = await fetch(`/api/messages/${id}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('No se pudo eliminar');
+      } catch (error) {
+        alert('Error al eliminar el mensaje.');
+      }
+    }
+
+    adminLogin.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const password = document.getElementById('adminPassword').value.trim();
+      if (password === ADMIN_PASSWORD) {
+        adminLogin.style.display = 'none';
+        adminSection.classList.add('show');
+        loadMessages();
+      } else {
+        alert('Contraseña incorrecta.');
+      }
+    });
+
+    refreshMessages.addEventListener('click', loadMessages);
+  </script>
+</body>
+</html>
