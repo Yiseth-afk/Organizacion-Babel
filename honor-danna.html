@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Honor a Danna</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Chewy', cursive;
+      background: radial-gradient(circle at top left, rgba(0, 188, 212, 0.16), transparent 20%), linear-gradient(135deg, #f8fdff 0%, #e6f8ff 100%);
+      color: #22343d;
+    }
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 24px 60px;
+    }
+    .hero-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), #eafcff);
+      border-radius: 32px;
+      border: 1px solid rgba(0, 188, 212, 0.18);
+      box-shadow: 0 22px 50px rgba(0, 188, 212, 0.12);
+      margin-bottom: 32px;
+    }
+    .hero-copy {
+      padding: 10px 4px;
+    }
+    .hero-copy h1 {
+      margin: 0 0 16px;
+      color: #004f66;
+      font-size: 3rem;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .hero-copy p {
+      margin: 0 0 20px;
+      line-height: 1.75;
+      color: #2b5663;
+      font-size: 1.05rem;
+    }
+    .hero-copy .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 188, 212, 0.12);
+      color: #005f74;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+    .hero-copy .hero-tag::before {
+      content: '💖';
+      font-size: 1.1rem;
+    }
+    .hero-photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      min-height: 360px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5), 0 18px 36px rgba(0, 188, 212, 0.1);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0, 188, 212, 0.16);
+    }
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 2.2rem;
+      color: #004f66;
+      text-align: center;
+    }
+    .section-description {
+      margin: 0 0 24px;
+      line-height: 1.75;
+      color: #2b5663;
+      text-align: center;
+      font-size: 1rem;
+    }
+    .form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .form label {
+      display: block;
+      font-weight: 700;
+      color: #006978;
+      margin-bottom: 6px;
+    }
+    .form input,
+    .form textarea {
+      width: 100%;
+      border: 1px solid rgba(0, 188, 212, 0.24);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font: inherit;
+      resize: vertical;
+      background: rgba(248, 253, 255, 0.95);
+      box-shadow: inset 0 2px 8px rgba(0, 188, 212, 0.05);
+    }
+    .form button {
+      justify-self: start;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #00bcd4, #0097a7);
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 14px 30px rgba(0, 188, 212, 0.22);
+    }
+    .form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(0, 188, 212, 0.28);
+    }
+    .messages {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .message-item {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f4feff, #e9fbff);
+      border: 1px solid rgba(0, 188, 212, 0.18);
+      color: #2a4f5d;
+    }
+    .message-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #005f74;
+    }
+    .message-item span {
+      display: block;
+      color: #28454f;
+      line-height: 1.8;
+    }
+    @media (max-width: 900px) {
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+      .hero-copy h1 {
+        font-size: 2.4rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .page {
+        padding: 24px 16px 40px;
+      }
+      .hero-card {
+        padding: 20px;
+      }
+      .hero-copy h1 {
+        font-size: 2rem;
+      }
+      .hero-photo {
+        min-height: 280px;
+      }
+      .card {
+        padding: 24px;
+      }
+      .form button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero-card">
+      <div class="hero-copy">
+        <span class="hero-tag">Honrando su luz</span>
+        <h1>En honor a Danna</h1>
+        <p>Su amor, alegría y recuerdos siguen vivos en cada paso que damos. Aquí puedes dejar un mensaje bonito, un recuerdo o una palabra de cariño.</p>
+      </div>
+      <div class="hero-photo">
+        <img src="images/Danna.jfif" alt="Danna" />
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="section-description">Escribe un mensaje de cariño, un recuerdo o una palabra de amor para Danna. Tu gesto se guardará como un abrazo para siempre.</p>
+
+      <form id="dannaMessageForm" class="form">
+        <label for="dannaMessageName">Tu nombre (opcional)</label>
+        <input id="dannaMessageName" name="dannaMessageName" type="text" placeholder="Tu nombre" />
+        <label for="dannaMessageText">Mensaje</label>
+        <textarea id="dannaMessageText" name="dannaMessageText" rows="4" placeholder="Escribe algo bonito para Danna..." required></textarea>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+
+      <div id="dannaMessagesList" class="messages"></div>
+    </div>
+  </div>
+
+  <script>
+    const apiUrl = '/api/messages';
+    const fallbackKey = 'babelDannaMessages';
+    const form = document.getElementById('dannaMessageForm');
+    const list = document.getElementById('dannaMessagesList');
+    const nameInput = document.getElementById('dannaMessageName');
+    const textInput = document.getElementById('dannaMessageText');
+
+    function renderMessages(messages) {
+      if (!messages || !messages.length) {
+        list.innerHTML = '<div class="message-item"><strong>Se el primero en dejar un mensaje</strong><span>Aún no hay mensajes, pero tu recuerdo puede ser el primero.</span></div>';
+        return;
+      }
+      list.innerHTML = messages.map(msg => `
+        <div class="message-item">
+          <strong>${msg.name || 'Anónimo'}</strong>
+          <span>${msg.text}</span>
+        </div>
+      `).join('');
+    }
+
+    function saveFallbackMessage(name, text) {
+      const messages = JSON.parse(localStorage.getItem(fallbackKey) || '[]');
+      messages.unshift({ name: name || 'Anónimo', text });
+      localStorage.setItem(fallbackKey, JSON.stringify(messages.slice(0, 50)));
+    }
+
+    async function loadMessages() {
+      try {
+        const response = await fetch(apiUrl);
+        if (response.ok) {
+          const messages = await response.json();
+          renderMessages(messages);
+          return;
+        }
+      } catch (error) {
+        console.warn('No se pudo conectar al servidor, usando datos locales:', error);
+      }
+
+      const stored = JSON.parse(localStorage.getItem(fallbackKey) || '[]');
+      renderMessages(stored);
+    }
+
+    async function postMessage(name, text) {
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, text })
+        });
+        if (response.ok) {
+          return true;
+        }
+      } catch (error) {
+        console.warn('No se pudo enviar al servidor, guardando localmente:', error);
+      }
+      return false;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const text = textInput.value.trim();
+      if (!text) return;
+
+      const savedOnServer = await postMessage(name || 'Anónimo', text);
+      if (!savedOnServer) {
+        saveFallbackMessage(name || 'Anónimo', text);
+      }
+
+      form.reset();
+      await loadMessages();
+    });
+
+    loadMessages();
+  </script>
+</body>
+</html>

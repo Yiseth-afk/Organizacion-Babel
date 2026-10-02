@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+  <title>Tipo de Número</title>
+</head>
+<body>
+  <h2>Identifica la edad</h2>
+  <input type="number" id="numero" placeholder="Escribe un número">
+  <button onclick="clasificarNumero()">Clasificar</button>
+  <p id="mensaje"></p>
+
+  <script>
+    function clasificarNumero() {
+      let num = parseFloat(document.getElementById("numero").value);
+      let mensaje = "";
+
+      if (num > 18) {
+        mensaje = "Eres mayor de edad";
+      } else if (num < 17) {
+        mensaje = "Eres menor de edad";
+      } else {
+        mensaje = "El número es cero";
+      }
+
+      document.getElementById("mensaje").textContent = mensaje;
+    }
+    
+  </script>
+</body>
+</html>
+<html>
+<head>
+  <title>Comparar Números</title>
+</head>
+<body>
+  <h2>¿Cuál número es menor?</h2>
+  <input type="number" id="num1" placeholder="Primer número">
+  <input type="number" id="num2" placeholder="Segundo número">
+  <button onclick="comparar()">Comparar</button>
+  <p id="resultado"></p>
+
+  <script>
+    function comparar() {
+      let n1 = parseFloat(document.getElementById("num1").value);
+      let n2 = parseFloat(document.getElementById("num2").value);
+      let resultado = "";
+
+      if (n1 < n2) {
+        resultado = "El primer número es menor";
+      } else if (n1 > n2) {
+        resultado = "El segundo número es menor";
+      } else {
+        resultado = "Ambos números son iguales";
+      }
+
+      document.getElementById("resultado").textContent = resultado;
+    }
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+  <title>Suma de Dos Números</title>
+</head>
+<body>
+  <h2>Suma de dos números</h2>
+  <input type="number" id="num1" placeholder="Número 1">
+  <input type="number" id="num2" placeholder="Número 2">
+  <button onclick="restar()">Restar</button>
+  <p id="resultado"></p>
+
+  <script>
+    function restar()    {
+      let a = parseFloat(document.getElementById("num1").value);
+      let b = parseFloat(document.getElementById("num2").value);
+      let suma = a + b;
+      document.getElementById("resultado").textContent = "La suma es: " + suma;
+    }
+  </script>
+</body>
+</html>
